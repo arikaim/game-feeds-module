@@ -1,0 +1,16 @@
+{
+    "title": "Game Feeds",
+    "name": "gamefeeds",
+    "version": "1.0.0",
+    "package-type": "module",
+    "class": "GameFeeds",
+    "description": "Arcade extension game feeds.",
+    "type": "package",
+    "category": "feeds",
+    "repository": "https://github.com/arikaim/game-feeds-module",
+    "require": {
+        "extensions": [
+            "arcade"
+        ]
+    }
+}
