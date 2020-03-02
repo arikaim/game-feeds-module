@@ -22,7 +22,7 @@ Additional game feeds drivers for [Arcade Site Script](https://codecanyon.net/it
 #### Installation
 
 ```sh
-composer require arikaim/recaptcha-module
+composer require arikaim/game-feeds-module
 ```
 
 from Arikaim **Control Panel**
