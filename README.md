@@ -10,6 +10,7 @@ Additional game feeds drivers for [Arcade Site Script](https://codecanyon.net/it
 
 #### Game feeds providers
  * GameArter
+ * Gamepix
 
 
 #### Requirements 

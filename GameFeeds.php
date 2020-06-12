@@ -26,12 +26,13 @@ class GameFeeds extends Module
     /**
      * Install module
      *
-     * @return void
+     * @return boolean
      */
     public function install()
     {
         $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Driver\\GameArterFeedDriver');
-        
+        $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Driver\\GamepixFeedDriver');
+
         return true;
     }
 }
