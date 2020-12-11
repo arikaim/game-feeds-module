@@ -28,7 +28,7 @@ composer require arikaim/game-feeds-module
 
 from Arikaim **Control Panel**
 ```
-Modules > Download 
+Modules > Repository 
 ```
 
 Download and install module
