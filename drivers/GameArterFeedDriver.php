@@ -7,16 +7,16 @@
  * @license     http://www.arikaim.com/license
  * 
 */
-namespace Arikaim\Modules\Gamefeeds\Driver;
+namespace Arikaim\Modules\Gamefeeds\Drivers;
 
 use Arikaim\Core\Driver\Traits\Driver;
 use Arikaim\Core\Interfaces\Driver\DriverInterface;
 use Arikaim\Core\Collection\FeedCollection;
 
 /**
- * Gamepix.com game feed driver class
+ * GameArter.com game feed driver class
  */
-class GamepixFeedDriver extends FeedCollection implements DriverInterface
+class GameArterFeedDriver extends FeedCollection implements DriverInterface
 {   
     use Driver;
    
@@ -25,7 +25,7 @@ class GamepixFeedDriver extends FeedCollection implements DriverInterface
      */
     public function __construct()
     {
-        $this->setDriverParams('gamepix','feeds.games','Gamepix','Driver for Gamepix.com game feed');
+        $this->setDriverParams('gamearter','feeds.games','GameArter','Driver for GameArter.com game feed');
     }
 
     /**
@@ -35,25 +35,28 @@ class GamepixFeedDriver extends FeedCollection implements DriverInterface
      * @return void
      */
     public function initDriver($properties)
-    {            
-        $baseUrl = $properties->getValue('base_url'); 
+    {     
+        $baseUrl = $properties->getValue('base_url');      
         $properties->offsetUnset('base_url');
 
         $config = $properties->getValues(); 
 
         $this
-            ->baseUrl($baseUrl)   
-            ->params($config)       
-            ->itemsKey('data')
-            ->mapKey('type',function($item) {                           
-                return 'html5'; 
+            ->baseUrl($baseUrl)          
+            ->params($config)
+            ->mapKey('type',function($item) {    
+                $type = \strtolower($item['technology']);            
+                return ($type == "webgl") ? 'html5' : $type;    
             })
             ->mapKey('thumbnail',function($item) {                           
-                return (empty($item['thumbnailUrl']) == true ) ? $item['thumbnailUrl100'] : $item['thumbnailUrl'];
+                return (empty($item['thumbnail']) == true ) ? $item['image'] : $item['thumbnail'];
             })
-            ->mapKey('tags',function($item) {                
-                return [];
-            })                         
+            ->mapKey('title','name') 
+            ->mapKey('categories',function($item) {                
+                $category = $item['category'];
+                return [$category];             
+            })
+            ->mapKey('instructions','controls')             
             ->mapKey('url',function($item) {                 
                 return $item['url'];
             });                         
@@ -63,28 +66,18 @@ class GamepixFeedDriver extends FeedCollection implements DriverInterface
      * Create driver config properties array
      *
      * @param Arikaim\Core\Collection\Properties $properties
-     * @return array
+     * @return void
      */
     public function createDriverConfig($properties)
     {              
-        // Base url
+        // base url
         $properties->property('base_url',function($property) {
             $property
                 ->title('Base Url')
                 ->type('text')
                 ->readonly(true)
-                ->value('https://games.gamepix.com/games')
-                ->default('https://games.gamepix.com/games');
-        }); 
-        // Sid
-        $properties->property('sid',function($property) {
-            $property
-                ->title('Sid')
-                ->type('text') 
-                ->value(1)
-                ->readonly(true)
-                ->hidden(true)                              
-                ->default('1');
+                ->value('https://www.gamearter.com/export/v1/games')
+                ->default('https://www.gamearter.com/export/v1/games');
         });   
     }
 }

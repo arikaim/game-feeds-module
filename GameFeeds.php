@@ -30,11 +30,11 @@ class GameFeeds extends Module
      */
     public function install()
     {
-        $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Driver\\GameArterFeedDriver');
-        $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Driver\\GamepixFeedDriver');
-        $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Driver\\GameDistributionFeed');
-        $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Driver\\GameMonetizeFeed');
-        $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Driver\\FamobiFeed');
+        $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Drivers\\GameArterFeedDriver');
+        $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Drivers\\GamepixFeedDriver');
+        $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Drivers\\GameDistributionFeed');
+        $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Drivers\\GameMonetizeFeed');
+        $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Drivers\\FamobiFeed');
 
         return true;
     }
