@@ -11,8 +11,11 @@ Additional game feeds drivers for [Arcade Site Script](https://codecanyon.net/it
 #### Game feeds providers
  * GameArter
  * Gamepix
- * GameDistribution
-
+ * GameDistribution 
+ * Famobi
+ * GameMonetize
+  
+  
 #### Requirements 
   * PHP 7.1
   * [Arikaim CMS](https://github.com/arikaim/arikaim)
