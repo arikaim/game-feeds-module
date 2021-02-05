@@ -15,9 +15,8 @@ Additional game feeds drivers for [Arcade Site Script](https://codecanyon.net/it
  * Famobi
  * GameMonetize
   
-  
+
 #### Requirements 
-  * PHP 7.1
   * [Arikaim CMS](https://github.com/arikaim/arikaim)
   * Arcade extension
 
