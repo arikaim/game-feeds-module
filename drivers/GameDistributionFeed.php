@@ -45,23 +45,29 @@ class GameDistributionFeed extends FeedCollection implements DriverInterface
             ->pageKey('page')
             ->perPageKey('amount')
             ->params($config)
-            ->mapKey('type','gameType')
+            ->mapKey('type','Type')
+            ->mapKey('title','Title')
+            ->mapKey('description','Description')
+            ->mapKey('instructions','Instructions')
+            ->mapKey('width','Width')
+            ->mapKey('height','Height')
+            ->mapKey('url','Url')
             ->mapKey('tags',function($item) {   
-                $list = (isset($item['tagList']) == true) ? $item['tagList'] : [];
+                $list = (isset($item['Tag']) == true) ? $item['Tag'] : [];
                 $result = [];
                 foreach ($list as $item) {
-                    \array_push($result,$item['name']);
+                    $result[] = \trim($item,'#');
                 }
                 return $result;       
             }) 
             ->mapKey('thumbnail',function($item) {           
-                return (isset($item['assetList']) == true) ? $item['assetList'][0]['name'] : null;           
+                return (isset($item['Asset']) == true) ? $item['Asset'][0] : null;           
             })
             ->mapKey('categories',function($item) {   
-                $list = (isset($item['categoryList']) == true) ? $item['categoryList'] : [];
+                $list = (isset($item['Category']) == true) ? $item['Category'] : [];
                 $result = [];
                 foreach ($list as $item) {
-                    \array_push($result,$item['name']);
+                    $result[] = $item;
                 }
                 return $result;       
             });           
