@@ -86,6 +86,7 @@ class GameDistributionFeed extends FeedCollection implements DriverInterface
             $property
                 ->title('Base Url')
                 ->type('text')
+                ->readonly(true)      
                 ->value('https://catalog.api.gamedistribution.com/api/v1.0/rss/All/')
                 ->default('https://catalog.api.gamedistribution.com/api/v1.0/rss/All/');
         });

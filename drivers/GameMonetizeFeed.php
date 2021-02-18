@@ -72,8 +72,50 @@ class GameMonetizeFeed extends FeedCollection implements DriverInterface
                 ->title('Base Url')
                 ->type('text')
                 ->readonly(true)
-                ->value('https://gamemonetize.com/feed.json')
-                ->default('https://gamemonetize.com/feed.json');
-        });       
+                ->value('https://gamemonetize.com/rssfeed.php')
+                ->default('https://gamemonetize.com/rssfeed.php');
+        });   
+        
+        $properties->property('format',function($property) {
+            $property
+                ->title('Format')
+                ->type('text')
+                ->readonly(true)
+                ->value('json')
+                ->default('json');
+        }); 
+
+        // company
+        $properties->property('company',function($property) {
+            $property
+                ->title('Company')
+                ->type('text')
+                ->value('All')
+                ->default('All');
+        });  
+        // category
+        $properties->property('category',function($property) {
+            $property
+                ->title('Category')
+                ->type('text')
+                ->value('All')
+                ->default('All');                
+        });
+        // Game Type
+        $properties->property('type',function($property) {
+            $property
+                ->title('Game Type')
+                ->type('text')
+                ->value('All')
+                ->default('All');
+        });
+        // Per page
+        $properties->property('amount',function($property) {
+            $property
+                ->title('Items per page')
+                ->type('number')
+                ->value(10)
+                ->default(10);
+        });
     }
 }
