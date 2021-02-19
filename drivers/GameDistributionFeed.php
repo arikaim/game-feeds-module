@@ -152,8 +152,8 @@ class GameDistributionFeed extends FeedCollection implements DriverInterface
             $property
                 ->title('Items per page')
                 ->type('text')
-                ->value('All')
-                ->default('All');
+                ->value(10)
+                ->default(10);
         });
     }
 }

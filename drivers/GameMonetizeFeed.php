@@ -114,8 +114,8 @@ class GameMonetizeFeed extends FeedCollection implements DriverInterface
             $property
                 ->title('Items per page')
                 ->type('number')
-                ->value(10)
-                ->default(10);
+                ->value('All')
+                ->default('All');
         });
     }
 }
