@@ -17,16 +17,9 @@ use Arikaim\Core\Extension\Module;
 class GameFeeds extends Module
 {   
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-    }
-
-    /**
      * Install module
      *
-     * @return boolean
+     * @return void
      */
     public function install()
     {
@@ -35,7 +28,5 @@ class GameFeeds extends Module
         $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Drivers\\GameDistributionFeed');
         $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Drivers\\GameMonetizeFeed');
         $this->installDriver('Arikaim\\Modules\\Gamefeeds\\Drivers\\FamobiFeed');
-
-        return true;
     }
 }
