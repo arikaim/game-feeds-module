@@ -48,13 +48,18 @@ class GameArterFeedDriver extends FeedCollection implements DriverInterface
                 $type = \strtolower($item['technology']);            
                 return ($type == "webgl") ? 'html5' : $type;    
             })
-            ->mapKey('thumbnail',function($item) {                           
-                return (empty($item['thumbnail']) == true ) ? $item['image'] : $item['thumbnail'];
+            ->mapKey('thumbnail',function($item) { 
+                $thumbnail = (empty($item['thumbnail']) == true ) ? $item['image'] : $item['thumbnail'];            
+                return (empty($thumbnail) == true) ? null : $thumbnail;
             })
             ->mapKey('title','name') 
             ->mapKey('categories',function($item) {                
                 $category = $item['category'];
                 return [$category];             
+            })->mapKey('width',function($item) {                 
+                return $item['width'] ?? '800';
+            })->mapKey('height',function($item) {                 
+                return $item['height'] ?? '600';
             })
             ->mapKey('instructions','controls')             
             ->mapKey('url',function($item) {                 
