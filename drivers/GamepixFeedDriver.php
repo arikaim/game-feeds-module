@@ -82,8 +82,7 @@ class GamepixFeedDriver extends FeedCollection implements DriverInterface
                 ->title('Sid')
                 ->type('text') 
                 ->value(1)
-                ->readonly(true)
-                ->hidden(true)                              
+                ->readonly(false)                        
                 ->default('1');
         });   
     }
